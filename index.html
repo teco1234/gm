@@ -9,5 +9,23 @@
     </head>
     <body>
         <p id="p0">Principal</p>
+
+        <script>
+            b=[]
+            jogos=['jogo 0','jogo 1','jogo 2','jogo 3','jogo 4',
+                'jogo 5','jogo 6','jogo 7','jogo 8','jogo 9'
+            ]
+            c0(p0,'yellow')
+            for(let i=0;i<10;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                ic(b[i],'b')
+                it(b[i],jogos[i])
+                ap(document.body,b[i])
+                b[i].onclick=()=>{
+                    location.href='j'+i+'.html'
+                }
+            }
+        </script>
     </body>
 </html>

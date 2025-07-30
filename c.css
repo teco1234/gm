@@ -3,9 +3,13 @@ body{
     font-size: 30px;
     font-family: tahoma;
 }
-p{margin: -2px 2px;}
+p{
+    margin: -2px 2px;
+    padding: 0 0 0 10px;
+    border-radius: 5px;
+}
 
-.b0{
+.b{
     background-color: red;
     color: white;
     border: none;
@@ -13,4 +17,7 @@ p{margin: -2px 2px;}
     font-size: 20px;
     padding: 5px;
     font-family: fantasy;
+    margin: 10px;
 }
+.b:hover{background-color: rgb(212, 2, 2);}
+.b:active{background-color: rgb(253, 19, 19);}
