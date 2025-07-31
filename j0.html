@@ -8,6 +8,120 @@
         <script src="j.js"></script>
     </head>
     <body>
-        <p id="p0"></p>
+        <a href="index.html">
+            <img src="v.png" alt="Voltar">
+            <p id="p0"></p>
+        </a>
+        
+        
+        <p id="p1"></p>
+        <fieldset id="f0" class="f"></fieldset>
+        <fieldset id="f1" class="f">
+            <p id="p2">Resposta</p>
+            <p id="p3"></p>
+        </fieldset>
+        <fieldset id="f2" class="f">
+            <button id="ca" class="b">Carregar</button>
+        </fieldset>
     </body>
+
+    <script>
+        let n,r,m,f0,f1,f2,t,q
+        b=[]
+        function ini(){
+            m=0
+            f0=ig('f0')
+            f1=ig('f1')
+            f2=ig('f2')
+            q=5
+        }ini()
+
+        function rei(){
+            it(p0,s[1])
+            c0(p0,k[1])
+            c1(p0,k[4])
+
+            n=[]
+            frn(q,n)
+            r=[]
+            r[0]=''
+            r[1]=''
+            r[0]=frj(n)
+            it(p1,r[0])
+
+            c0(p2,k[2])
+            c1(p2,k[0])
+            c0(p3,k[2])
+            c1(p3,k[0])
+            it(p3,r[0])
+
+            dpn(f0)
+            dpn(f1)
+            dpn(f2)
+
+            t=[]
+            t[0]=0
+            t[1]=200
+        }rei()
+
+        
+            for(let i=0;i<11;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                ic(b[i],'b')
+                if(i<10)it(b[i],i)
+                else it(b[i],'Limpar')
+                ap(f0,b[i])
+                b[i].onclick=()=>{
+                    if(r[0].length>r[1].length){
+                        if(i<10){
+                            r[1]+=i
+                            it(p1,r[1])
+                        }else{
+                            r[1]=''
+                            it(p1,s[0])
+                        }
+
+                        if(r[0].length==r[1].length){
+                            if(r[0]==r[1]){
+                                c0(p0,k[3])
+                                c1(p0,k[0])
+                                it(p0,e[0])
+                                dpb(f2)
+                                if(q<12)q++
+                            }else{
+                                c0(p0,k[2])
+                                c1(p0,k[0])
+                                it(p0,e[1])
+                                dpb(f1)
+                                dpb(f2)
+                                if(q>4)q--
+                            }
+                            dpn(f0)
+                        }
+                    }
+                }
+            }
+        
+            ca.onclick=()=>{
+                m=0
+                rei()
+            }
+
+            function at(){
+                if(m==0){
+                    t[0]++
+                    if(t[0]>t[1]){
+                        m=1
+                        dpb(f0)
+                        it(p0,s[2])
+                        it(p1,s[0])
+                    }
+                }
+            }
+            function rd(){
+                at()
+                window.requestAnimationFrame(rd)
+            }rd()
+    </script>
 </html>
