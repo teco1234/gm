@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Soma</title>
+        <link rel="stylesheet" href="c.css">
+        <script src="j.js"></script>
+    </head>
+    <body>
+        <a href="index.html">
+            <img src="v.png" alt="Voltar">
+        </a>
+        <p id="p0"></p>
+        <p id="p1"></p>
+        <fieldset id="f0" class="f"></fieldset>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <fieldset id="f1" class="f">
+            <button id="ca" class="b">Carregar</button>
+        </fieldset>
+
+        <script>
+            let n,q,m,v,r,f,b=[],t
+            u=0
+            function ini(){
+                q=2
+                m=0
+                v=[]
+                v[0]=10
+                v[1]=4
+                f=[]
+                for(let i=0;i<2;i++)f[i]=ig('f'+i)
+
+            }ini()
+
+            function rei(){
+                it(p0,'Memorize!')
+                c0(p0,'yellow')
+                c1(p0,'black')
+
+                n=[]
+                r=[]
+                r[0]=''
+                r[1]=0
+                r[2]=''
+                for(let i=0;i<q;i++){
+                    n[i]=mat(v[0],v[1])
+                    if(i<q-1)r[0]+=n[i]+'+'
+                    else r[0]+=n[i]+'='
+
+                    r[1]+=n[i]
+                }
+                it(p1,r[0])
+                t=[]
+                t[0]=0
+                t[1]=200+u
+
+                dpn(f0)
+                dpn(f1)
+
+                it(p2,'Resposta!')
+                it(p3,r[0]+' '+r[1])
+                c0(p2,'red')
+                c1(p2,'white')
+                c0(p3,'red')
+                c1(p3,'white')
+                dpn(p2)
+                dpn(p3)
+            }rei()
+
+            for(let i=0;i<11;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                ic(b[i],'b')
+                if(i<10)it(b[i],i)
+                else it(b[i],'Limpar')
+                ap(f0,b[i])
+                b[i].onclick=()=>{
+                    if(r[1].toString().length>r[2].length){
+                        if(i<10){
+                            r[2]+=i
+                            it(p1,r[2])
+                        }else{
+                            r[2]=''
+                            it(p1,'|')
+                        }
+                    }
+                }
+            }
+
+            ca.onclick=()=>{
+                m=0
+                rei()
+            }
+
+            function md0(){
+                it(p0,'Digite!')
+                it(p1,'|')
+                dpb(f0)
+            }
+
+            function at(){
+                if(m==0){
+                    t[0]++
+                    if(t[0]>t[1])md0()
+                }
+            }
+            function rd(){
+                at()
+                window.requestAnimationFrame(rd)
+            }rd()
+        </script>
+    </body>
+</html>
