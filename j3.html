@@ -85,6 +85,13 @@
                             r[2]=''
                             it(p1,'|')
                         }
+
+                        if(r[1].toString().length==r[2].length){
+                            if(r[1]==r[2])md1()
+                            else md2()
+
+                            dpn(f0)
+                        }
                     }
                 }
             }
@@ -95,9 +102,34 @@
             }
 
             function md0(){
+                m=1
                 it(p0,'Digite!')
                 it(p1,'|')
                 dpb(f0)
+            }
+            function md1(){
+                c0(p0,'blue')
+                c1(p0,'white')
+                it(p0,'Acertou!')
+                dpb(f1)
+                if(q<8){
+                    q++
+                    v[0]+=2
+                    v[1]+=1
+                    u+=50
+                }
+            }
+            function md2(){
+                c0(p0,'red')
+                c1(p0,'white')
+                it(p0,'Errou!')
+                dpb(f1)
+                dpb(p2)
+                dpb(p3)
+                if(q>3)q=2
+                v[0]=10
+                v[1]=4
+                u=0
             }
 
             function at(){
