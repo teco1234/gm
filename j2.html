@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Maior menor</title>
+        <link rel="stylesheet" href="c.css">
+        <script src="j.js"></script>
+    </head>
+    <body>
+        <a href="index.html">
+            <img src="v.png" alt="Voltar">
+        </a>
+        <p id="p0"></p>
+        <p id="p1"></p>
+        <fieldset id="f0" class="f"></fieldset>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <p id="p4"></p>
+        <fieldset id="f1" class="f">
+            <button id="ca" class="b">Carregar</button>
+        </fieldset>
+
+        <script>
+            let n,m,q,r,re,b=[],f,res
+            d=['>','<','=','Limpar']
+            let t
+
+            function ini(){
+                q=3
+                m=0
+                f=[]
+                f[0]=ig(f0)
+                f[1]=ig(f1)
+                u=0
+            }ini()
+
+            function rei(){
+                c0(p0,k[1])
+                c1(p0,k[4])
+                it(p0,s[1])
+
+                n=[]
+                r=[]
+                for(let i=1;i<q;i++)r[i-1]=''
+
+                for(let i=0;i<q;i++){
+                    n[i]=mat(89,10)
+                    if(i<q-1)r[0]+=n[i]+','
+                    else r[0]+=n[i]
+                }
+                it(p1,r[0])
+
+                res=[]
+                res[0]=''
+                res[1]=''
+                re=[]
+                for(let i=0;i<q;i++){
+                    if(i>0){
+                        if(n[i-1]<n[i])re[i-1]='<'
+                        else if(n[i-1]>n[i])re[i-1]='>'
+                        else re[i-1]='='
+
+                        res[0]+=re[i-1]
+                    }
+                }
+
+                c0(p2,k[2])
+                c0(p3,k[2])
+                c0(p4,k[2])
+                c1(p2,k[0])
+                c1(p3,k[0])
+                c1(p4,k[0])
+                it(p2,e[2])
+                it(p3,r[0])
+                it(p4,res[0])
+                dpn(p2)
+                dpn(p3)
+                dpn(p4)
+                dpn(f0)
+                dpn(f1)
+
+                t=[]
+                t[0]=0
+                t[1]=200+u
+            }rei()
+
+            for(let i=0;i<4;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                ic(b[i],'b')
+                it(b[i],d[i])
+                ap(f0,b[i])
+                b[i].onclick=()=>{
+                    if(res[0].length>res[1].length){
+                        if(i<3){
+                            res[1]+=d[i]
+                            it(p1,res[1])
+                        }else{
+                            res[1]=''
+                            it(p1,'|')
+                        }
+
+                        if(res[0].length==res[1].length){
+                            if(res[0]==res[1])md1()
+                            else md2()
+                        }
+                    }
+                }
+            }
+
+            ca.onclick=()=>{
+                m=0
+                rei()
+            }
+
+            function md0(){
+                m=1
+                it(p0,s[2])
+                it(p1,s[0])
+                dpb(f0)
+            }
+            function md1(){
+                c0(p0,k[3])
+                c1(p0,k[0])
+                it(p0,e[0])
+                dpb(f1)
+                if(q<12)q++
+                u=10
+            }
+            function md2(){
+                c0(p0,k[2])
+                c1(p0,k[0])
+                it(p0,e[1])
+                dpb(p2)
+                dpb(p3)
+                dpb(p4)
+                dpb(f1)
+                if(q>3)q--
+                u=-10
+            }
+
+            function at(){
+                if(m==0){
+                    t[0]++
+                    if(t[0]>t[1])md0()
+                }
+            }
+            function rd(){
+                at()
+                window.requestAnimationFrame(rd)
+            }rd()
+        </script>
+    </body>
+</html>
