@@ -37,4 +37,39 @@ function dpn(a){a.style.display='none'}
 function dpb(a){a.style.display='block'}
 function dpi(a){a.style.display='inline'}
 
+function bs(q,n,t,y,c,f){
+    for(let i=0;i<q;i++){
+        n[i]=ie(t)
+        ii(n[i],y+i)
+        ic(n[i],c)
+        it(n[i],i)
+        ap(f,n[i])
+    }
+}
+
+function nm(q,n,a,b0,b1){
+    for(let i=0;i<q;i++){
+        n[i]=mat(b0,b1)
+        if(i<2)a[0]+=n[i]+'+'
+        else if(i<3)a[0]+=n[i]+'-'
+        else if(i<4)a[0]+=n[i]+'*'
+        else if(i<5)a[0]+=n[i]+'+'
+        else if(i<6)a[0]+=n[i]+'/'
+        else if(i<7)a[0]+=n[i]+'-'
+        else a[0]+=n[i]+'='
+
+        if(i<3)a[1]+=n[i]
+        else if(i<4)a[1]-=n[i]
+        else if(i<5)a[1]*=n[i]
+        else if(i<6)a[1]+=n[i]
+        else if(i<7){
+            a[1]/=n[i]
+            let re=parseInt(a[1])
+            a[1]=re
+        }else a[1]-=n[i]
+
+        cn(a[1]) 
+    }
+}
+
 
