@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Operações</title>
+        <link rel="stylesheet" href="c.css">
+        <script src="j.js"></script>
+    </head>
+    <body>
+        <a href="index.html">
+            <img src="v.png" alt="Voltar">
+        </a>
+        <p id="p0"></p>
+        <p id="p1"></p>
+        <p id="p4"></p>
+
+        <fieldset id="f0" class="f"></fieldset>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <fieldset id="f1" class="f">
+            <button id="ca" class="b">Carregar</button>
+        </fieldset>
+
+        <script>
+            let n,q,r,o,v=[],f,b=[],res
+
+            function ini(){
+                q=2
+                v=[]
+                v[0]=mat(60,2)
+                v[1]=2
+                v[2]=mat(10,2)
+
+                f=[]
+                f[0]=ig('f0')
+                f[1]=ig('f1')
+            }ini()
+
+            for(let i=0;i<12;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                ic(b[i],'b')
+                if(i==11)it(b[i],'Limpar')
+                else if(i==10)it(b[i],'-')
+                else it(b[i],i)
+                ap(f[0],b[i])
+                b[i].onclick=()=>{
+                    if(r[1].toString().length>r[2].length){
+                        if(i==11){
+                            r[2]=''
+                            it(p4,'|')
+                        }else if(i==10){
+                            if(r[2]==''){
+                                r[2]+='-'
+                                it(p4,r[2])
+                            }
+                        }else{
+                            r[2]+=i
+                            it(p4,r[2])
+                        }
+                    }
+
+                    if(r[1].toString().length==r[2].length){
+                        if(r[1]==r[2]){
+                            md0()
+                            dpb(f[1])
+                        }else{
+                            md1()
+                            dpb(p2)
+                            dpb(p3)
+                            dpb(f[1])
+                        } 
+                    }
+                }
+            }
+
+            function rei(){
+                n=[]
+                r=[]
+                r[0]=''
+                r[1]=0
+                r[2]=''
+                for(let i=0;i<q;i++){
+                    if(i==0)n[i]=mat(v[0],v[1])
+                    else n[i]=mat(v[2],v[1])
+                }
+                if(n[0]<n[1])o=0
+                else{
+                    if(n[0]<20 && n[1]<20)o=2
+                    else if(n[0]/5>n[1])o=3
+                    else o=1
+                }
+
+                if(o==0){
+                    for(let i=0;i<q;i++){
+                        if(i==0)r[0]+=n[i]+' + '
+                        else r[0]+=n[i]+' = '
+                        r[1]=n[0]+n[1]
+                    }
+                }else if(o==1){
+                    for(let i=0;i<q;i++){
+                        if(i==0)r[0]+=n[i]+' - '
+                        else r[0]+=n[i]+' = '
+                        r[1]=n[0]-n[1]
+                    }
+                }else if(o==2){
+                    for(let i=0;i<q;i++){
+                        if(i==0)r[0]+=n[i]+' * '
+                        else r[0]+=n[i]+' = '
+                        r[1]=n[0]*n[1]
+                    }
+                }else{
+                    for(let i=0;i<q;i++){
+                        if(i==0)r[0]+=n[i]+' / '
+                        else r[0]+=n[i]+' = '
+                        r[1]=n[0]/n[1]
+                        res=parseInt(r[1])
+                        r[1]=res
+                    }
+                }
+
+                c0(p0,'lightcyan')
+                c1(p0,'black')
+                it(p0,'Calcule')
+                it(p1,r[0])
+                c0(p2,'red')
+                c0(p3,'red')
+                c1(p2,'white')
+                c1(p3,'white')
+                it(p2,'Resultado')
+                it(p3,r[0]+r[1])
+
+                it(p4,'|')
+                dpn(f[1])
+                dpn(p2)
+                dpn(p3)
+            }rei()
+            
+            function md0(){
+                c0(p0,'blue')
+                c1(p0,'white')
+                it(p0,'Acertou!')
+                if(r[1]<=0)r[1]=mat(10,2)
+                v[0]=r[1]*4
+                v[1]++
+                v[2]++
+            }
+            function md1(){
+                c0(p0,'red')
+                c1(p0,'white')
+                it(p0,'Errou!')
+                if(r[1]<=0)r[1]=mat(20,5)
+                v[0]=10
+                v[1]=2
+                v[2]=10
+            }
+
+            ca.onclick=()=>{
+                rei()
+            }
+        </script>
+    </body>
+</html>
