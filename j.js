@@ -71,5 +71,8 @@ function nm(q,n,a,b0,b1){
         cn(a[1]) 
     }
 }
+function st(a){
+    a.sort(()=>Math.random()-.5)
+}
 
 

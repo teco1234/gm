@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ordem</title>
+        <link rel="stylesheet" href="c.css">
+        <script src="j.js"></script>
+    </head>
+    <body>
+        <a href="index.html">
+            <img src="v.png" alt="Voltar">
+        </a>
+        <p id="p1" class="k"></p>
+        <p id="p0"></p> 
+        <fieldset id="f0" class="f"></fieldset>
+        <p id="p2" class="k"></p>
+        <button id="ca" class="b">Carregar</button>
+
+        <script>
+            let o,q,n,m,l,f,b=[],c,k,para,passa
+            let pontos,t
+
+            function ini(){
+                q=10
+                l=[]
+                l[0]=0
+                l[1]=mat(4,1)
+
+                f=[]
+                f[0]=ig('f0')
+                f[1]=ig('f1')
+                pontos=0
+                
+            }ini()
+
+            function rei(){
+                dpn(ca)
+                o=mat(2,0)
+                if(o==0)it(p0,'Crecente!')
+                else it(p0,'Decrecente!')
+
+                n=[]
+                m=[]
+                k=[]
+                for(let i=0;i<q;i++){
+                    l[0]+=l[1]
+                    n[i]=l[0]
+                    m[i]=n[i]
+                    l[1]=mat(4,1)
+                    k[i]=0
+                }
+
+                st(n)
+                if(o==0)c=0
+                else c=n.length-1
+
+                para=0
+                passa=false
+                t=[]
+                t[0]=0
+                t[1]=60
+                t[2]=0
+                it(p1,'Pontos \u00A0\u00A0 :'+pontos+'\u00A0\u00A0')
+                it(p2,'Tempo \u00A0\u00A0 :'+t[2]+' / '+t[1]+'\u00A0\u00A0')
+            }rei()
+
+            for(let i=0;i<30;i++){
+                b[i]=ie('button')
+                ii(b[i],'b'+i)
+                b[i].style.width=50+'px'
+                ic(b[i],'b')
+                ap(f[0],b[i])
+                b[i].onclick=()=>{
+                    if(k[i]==0 && para==0){
+                        if(o==0){
+                            if(n[i]==m[c]){
+                                c0(b[i],'blue')
+                            }else{
+                                c0(b[i],'black')
+                                para=1
+                                dpb(ca)
+                            } 
+
+                            c++
+                        }else{
+                            if(n[i]==m[c]){
+                                c0(b[i],'blue')
+                            }else{
+                                 c0(b[i],'black')
+                                 para=1
+                                 dpb(ca)
+                            }
+
+                            c--
+                        }
+
+                        k[i]=1
+                        if(o==0){
+                            if(c==n.length){
+                                dpb(ca)
+                                passa=true
+                                pontos++
+                            }
+                        }else{
+                            if(c<0){
+                                dpb(ca)
+                                passa=true
+                                pontos++
+                            }
+                        }
+                    }
+                }
+            }
+            
+            function bti(){
+                for(let i=0;i<30;i++){
+                    if(i<n.length){
+                        it(b[i],n[i])
+                        dpi(b[i])
+                        c0(b[i],'red')
+                    }else{
+                        dpn(b[i])
+                    }
+                }
+            }bti()
+
+            ca.onclick=()=>{
+                if(passa){
+                    if(q<=30)q++
+                }else{
+                     q=10
+                     pontos=0
+                }
+                l[0]=0
+                l[1]=mat(4,1)
+                rei()
+                bti()
+            }
+
+            function at(){
+                if(para==0 && !passa){
+                    t[0]++
+                    if(t[0]>t[1]){
+                        t[2]++
+                        t[0]=0
+                        it(p2,'Tempo \u00A0\u00A0 :'+t[2]+' / '+t[1]+'\u00A0\u00A0')
+                    }
+
+                    if(t[2]>t[1]){
+                        para=1
+                        dpb(ca)
+                        pontos=0
+                    }
+                }
+            }
+            function rd(){
+                at()
+                window.requestAnimationFrame(rd)
+            }rd()
+        </script>
+    </body>
+</html>
